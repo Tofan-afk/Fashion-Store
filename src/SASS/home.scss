@@ -22,12 +22,12 @@
   display: flex;
   flex-direction: column;
   gap: 150px;
+  margin-bottom: 100px;
 }
 
 #present_image {
   position: absolute;
   top: 0;
-  right: 0;
   z-index: -1;
   object-fit: cover;
   height: 80vh;
@@ -54,6 +54,7 @@
   justify-content: center;
   #present_title {
     h1 {
+      display: block;
       color: white;
       @include heading_def;
     }
@@ -83,132 +84,115 @@
   }
 }
 
-#services_container {
-  display: flex;
-  justify-content: center;
-  padding: 0 100px;
-  ul {
-    max-width: 1920px;
-    list-style-type: none;
-    padding: 0;
+.wide_container {
+  margin: 0 auto;
+  max-width: 1920px;
+  width: 100%;
+}
+span {
+  display: inline-block;
+  * {
     margin: 0;
-    width: 100%;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    li {
-      border-bottom: solid 1px #ddd3d1;
-      border-top: solid 1px #ddd3d1;
-      width: 380px;
-      height: 160px;
-      display: flex;
-      align-items: center;
-      div {
-        width: 100%;
-        span {
-          &:nth-child(1) {
-            display: block;
-            margin-bottom: 10px;
-          }
-        }
-        h1 {
-          letter-spacing: normal !important;
-          font-size: 1.5rem !important;
-          margin: 0;
-          @include heading_def;
-        }
-        p {
-          margin: 0;
-          @include description_text;
-        }
+  }
+  h1 {
+    @include heading_def;
+  }
+  p {
+    @include description_text;
+  }
+}
+.photo-carousel {
+  display: flex;
+  gap: 20px;
+  padding: 50px 100px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1920px;
+  margin: auto;
+  button {
+    @include button;
+    padding: 0 20px;
+  }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    img {
+      max-width: 100%;
+      height: 420px;
+      object-fit: cover;
+      transition: scale 0.3s ease-in-out;
+      &:hover {
+        scale: 1.1;
       }
     }
   }
 }
 
-#trending_container {
-  margin: 0 auto;
-  max-width: 1920px;
-  span {
-    display: inline-block;
-    * {
-      margin: 0;
-    }
-    h1 {
-      @include heading_def;
-    }
-    p {
-      @include description_text;
-    }
-  }
-  .photo-carousel {
-    display: flex;
-    gap: 20px;
-    padding: 50px 100px;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1920px;
-    margin: auto;
-    button {
-      @include button;
-      padding: 0 20px;
-    }
-  }
-
-  .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-
-  .photo-grid img {
-    max-width: 100%;
-    height: 420px;
-    object-fit: cover;
-  }
-}
-
-#video_container {
-  width: 100%;
-  height: 782px;
-  iframe {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-#reviews_container {
+#seas_cat_container {
   display: flex;
-  justify-content: center;
-  padding: 0 100px;
-  height: 250px;
-  /* styles.css */
-  .review-carousel {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1920px;
-    width: 100%;
-    margin: auto;
+  height: 780px;
+  width: 100%;
+  max-width: 1920px;
+  flex-direction: row;
+  flex-shrink: 0;
+  gap: 20px;
+  margin: 0 auto;
+  div {
+    position: relative;
+    img {
+      position: static;
+      z-index: -1;
+    }
+    .contents {
+      position: absolute;
+      padding-left: 5vw;
+      padding-bottom: 70px;
+      bottom: 0;
+      left: 0;
+      height: fit-content !important;
+      color: white; // Change the text color to be visible over the image
+      text-align: left; // Center-align the text
+      margin: 0; // Remove any default margin
+      h2 {
+        display: block;
+        width: fit-content;
+        @include heading_def;
+        margin: 5px 0;
+      }
+    }
   }
-
-  .review-carousel div {
-    max-width: 700px;
-    height: auto;
-    @include description_text;
-    font-style: italic;
+  #s_c_big {
+    position: relative;
+    width: calc(50% - 10px);
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    .contents {
+      button {
+        @include button_white_text;
+      }
+    }
+  }
+  #s_c_half {
+    width: calc(50% - 10px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    span {
-      height: 80px;
+    justify-content: space-between;
+    div {
+      height: calc(50% - 10px);
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
     }
-  }
-
-  button {
-    @include button;
+    .contents {
+      button {
+        @include button_transparent_text;
+      }
+    }
   }
 }

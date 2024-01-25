@@ -1,0 +1,77 @@
+@import "./defaults/mixins.scss";
+
+#about {
+  display: flex;
+  flex-direction: column;
+  gap: 150px;
+  margin-bottom: 100px;
+}
+
+#startedsec_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 100px;
+  h2 {
+    @include heading_def;
+    margin: 10px;
+  }
+  p {
+    @include description_text;
+    line-height: 160%; /* 25.6px */
+    width: 65%;
+    margin: 0 auto;
+  }
+}
+
+#our_stores_container {
+  margin: 0 auto;
+  padding: 0 100px;
+  width: calc(100% - 200px);
+  max-width: 1920px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  img {
+    width: 45%;
+    height: 540px;
+    object-fit: cover;
+  }
+  #stores_mini_container {
+    width: 45%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-content: center;
+    p {
+      margin: 0;
+      margin-bottom: 40px;
+      width: 100%;
+      text-align: left !important;
+      @include description_text;
+    }
+    h2 {
+      margin: 0;
+      text-align: left !important;
+      @include heading_def;
+      width: 100%;
+      height: min-content;
+    }
+    div {
+      h3 {
+        text-align: left !important;
+        @include heading_def;
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-decoration-line: underline;
+      }
+      width: 50%;
+      p {
+        width: fit-content;
+        margin: 0;
+      }
+    }
+  }
+}

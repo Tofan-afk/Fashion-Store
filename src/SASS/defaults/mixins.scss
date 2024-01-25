@@ -26,6 +26,48 @@
   padding: 10px 50px;
 }
 
+@mixin button_white_text {
+  border: none;
+  background: #fff;
+  padding: 10px 50px;
+  color: #040404;
+  font-family: "DM Sans";
+
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 1.68px;
+  text-transform: uppercase;
+}
+
+@mixin button_transparent_text {
+  border: 1px solid white;
+  background: transparent;
+  padding: 10px 50px;
+  color: #fff;
+  font-family: "DM Sans";
+
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 1.68px;
+  text-transform: uppercase;
+}
+
+@mixin button_black_text {
+  border: none;
+  background: black;
+  padding: 10px 50px;
+  color: #fff;
+  font-family: "DM Sans";
+
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 1.68px;
+  text-transform: uppercase;
+}
+
 @mixin description_text {
   color: #737373;
   text-align: center;
