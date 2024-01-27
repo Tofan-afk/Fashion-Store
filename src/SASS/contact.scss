@@ -1,0 +1,17 @@
+@import "./defaults/mixins.scss";
+
+#contact {
+  display: flex;
+  flex-direction: column;
+  gap: 150px;
+  margin-bottom: 100px;
+}
+
+#contact_info_container {
+  margin: 0 auto;
+  padding: 0 100px;
+  width: calc(100% - 200px);
+  max-width: 1920px;
+  display: flex;
+  flex-direction: row;
+}

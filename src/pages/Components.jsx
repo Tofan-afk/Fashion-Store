@@ -335,3 +335,33 @@ export function Logo_Buttons() {
     </div>
   );
 }
+
+export function Stores() {
+  return (
+    <div id="our_stores_container">
+      <img src="stores_img.png" />
+      <div id="stores_mini_container">
+        <h2>Our stores</h2>
+        <p>You can also directly buy products from our stores.</p>
+        <div>
+          <h3>USA</h3>
+          <p>730 Glenstone Ave 65802, Springfield, US</p>
+          <p>
+            +123 222 333 44 <br />
+            +123 666 777 88
+          </p>
+          <p>swanky@yourinfo.com</p>
+        </div>
+        <div>
+          <h3>France</h3>
+          <p>13 Rue Montmartre 75001, Paris, France</p>
+          <p>
+            +123 222 333 44 <br />
+            +123 666 777 88
+          </p>
+          <p>swanky@yourinfo.com</p>
+        </div>
+      </div>
+    </div>
+  );
+}

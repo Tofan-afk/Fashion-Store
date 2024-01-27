@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../SASS/about.scss";
 import {
   Services,
@@ -7,6 +7,7 @@ import {
   Recent_Blogs,
   Instagram_Post,
   Present,
+  Stores,
 } from "./Components";
 
 export default function About() {
@@ -41,36 +42,6 @@ function StartedSec() {
         purus penatibus. At placerat dis dis tincidunt nunc nisl vivamus vitae
         felis.{" "}
       </p>
-    </div>
-  );
-}
-
-function Stores() {
-  return (
-    <div id="our_stores_container">
-      <img />
-      <div id="stores_mini_container">
-        <h2>Our stores</h2>
-        <p>You can also directly buy products from our stores.</p>
-        <div>
-          <h3>USA</h3>
-          <p>730 Glenstone Ave 65802, Springfield, US</p>
-          <p>
-            +123 222 333 44 <br />
-            +123 666 777 88
-          </p>
-          <p>swanky@yourinfo.com</p>
-        </div>
-        <div>
-          <h3>France</h3>
-          <p>13 Rue Montmartre 75001, Paris, France</p>
-          <p>
-            +123 222 333 44 <br />
-            +123 666 777 88
-          </p>
-          <p>swanky@yourinfo.com</p>
-        </div>
-      </div>
     </div>
   );
 }

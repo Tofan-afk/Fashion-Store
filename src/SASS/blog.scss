@@ -1,0 +1,121 @@
+@import "./defaults/mixins.scss";
+
+#blogs {
+  display: flex;
+  flex-direction: column;
+  gap: 150px;
+  margin-bottom: 100px;
+}
+
+#blogs_material_container {
+  margin: 0 auto;
+  padding: 0 100px;
+  width: calc(100% - 200px);
+  max-width: 1920px;
+  display: flex;
+  flex-direction: row;
+  #blogs_showcase {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px;
+    .blog {
+      height: min-content;
+      &:hover {
+        h2 {
+          color: #ec6c5a;
+        }
+      }
+      line-height: 25px;
+      width: 30%;
+      margin-bottom: 20px;
+      img {
+        width: 100%;
+        object-fit: cover;
+        height: 280px;
+      }
+      h2 {
+        @include heading_def;
+        font-size: 2rem;
+      }
+      p {
+        @include description_text;
+        margin: 0;
+      }
+    }
+    // Separate div for buttons that occupies an entire row
+    .buttons-row {
+      width: 100%;
+      height: min-content;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 40px;
+
+      button {
+        cursor: pointer;
+        &:hover {
+          background-color: #f0f0f0;
+        }
+        margin: 0;
+        border: none;
+        background-color: transparent;
+      }
+      .pagination {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 0;
+        gap: 40px;
+        width: min-content;
+
+        button {
+          margin: 0 5px;
+          padding: 5px 10px;
+        }
+      }
+    }
+  }
+  #categories {
+    width: 60%;
+    form {
+      border-bottom: 1px solid black;
+      display: flex;
+      flex-direction: row;
+      input {
+        width: 85%;
+        @include description_text;
+        text-align: left;
+        font-style: italic;
+        color: #a9a09e;
+        border: 0;
+      }
+      button {
+        width: 15%;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        background-color: transparent;
+        transition: transform 0.3s ease-in-out;
+        &:hover {
+          transform: scale(1.3);
+        }
+      }
+    }
+    h2 {
+      @include heading_def;
+      font-size: 1.7rem;
+      text-decoration: underline;
+      text-align: left;
+    }
+    p {
+      @include description_text;
+      text-align: left;
+      &:hover {
+        color: #040404;
+        font-weight: 700;
+        text-decoration: underline;
+      }
+    }
+  }
+}
