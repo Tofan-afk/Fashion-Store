@@ -22,8 +22,10 @@
     .blog {
       height: min-content;
       &:hover {
-        h2 {
-          color: #ec6c5a;
+        a {
+          h2 {
+            color: #ec6c5a;
+          }
         }
       }
       line-height: 25px;

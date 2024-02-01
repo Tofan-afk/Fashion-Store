@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../SASS/blog.scss";
 import { Logo_Buttons, Instagram_Post, Present } from "./Components";
+import { Link } from "react-router-dom";
 
 export default function Blogs() {
   return (
@@ -31,7 +32,9 @@ function Blog_Material() {
       return batch.map((e, index) => (
         <div key={index} className="blog">
           <img src={e.src} alt={e.title} />
-          <h2>{e.title}</h2>
+          <Link to="/Swanky-Fashion-Store/blogdetails">
+            <h2>{e.title}</h2>
+          </Link>
           <p>{e.desc}</p>
         </div>
       ));

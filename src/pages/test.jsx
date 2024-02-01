@@ -1,189 +1,56 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../SASS/test.scss";
+import { Item } from "./Components";
 
 export default function Test() {
-  const [ImgSelect, setImgSelect] = useState("./shop/distress_beanie.png");
-  const image_column = [
-    "./place.jpg",
-    "./shop/distress_beanie.png",
-    "./shop/couch.png",
-  ];
-
-  const [value, setValue] = useState(1);
-
-  const handleInputChange = (event) => {
-    let inputValue = parseInt(event.target.value, 10);
-
-    if (!isNaN(inputValue) && inputValue >= 1 && inputValue <= 25) {
-      setValue(inputValue);
-    }
-  };
-
-  const decreaseValue = () => {
-    setValue((prevValue) => Math.max(prevValue - 1, 1));
-  };
-
-  const increaseValue = () => {
-    setValue((prevValue) => Math.min(prevValue + 1, 25));
-  };
-
   return (
     <div id="item_container">
-      <div id="image_column">
-        {image_column.map((image) => (
-          <img key={image} src={image} onClick={() => setImgSelect(image)} />
-        ))}
-      </div>
-      <img id="active_image" src={ImgSelect} />
-      <div id="item_description">
-        <div className="item_title_rating">
-          <h2>Orange beanie</h2>
-          <svg
-            width="117"
-            height="17"
-            viewBox="0 0 117 17"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M13.0816 15.9375C12.9698 15.938 12.8607 15.9031 12.7698 15.8379L8.49958 12.7421L4.22933 15.8379C4.1381 15.9041 4.02818 15.9395 3.91548 15.9391C3.80278 15.9387 3.69313 15.9025 3.60238 15.8356C3.51164 15.7688 3.44449 15.6748 3.41066 15.5673C3.37683 15.4598 3.37807 15.3444 3.41419 15.2376L5.07966 10.3046L0.763252 7.34455C0.669756 7.28051 0.599191 7.18824 0.561866 7.08123C0.524541 6.97423 0.522414 6.85809 0.555794 6.74979C0.589175 6.64149 0.656314 6.5467 0.747402 6.47927C0.838489 6.41185 0.948753 6.37532 1.06208 6.37502H6.3872L7.99423 1.42941C8.02885 1.32264 8.0964 1.22957 8.18719 1.16357C8.27797 1.09756 8.38733 1.06201 8.49958 1.06201C8.61183 1.06201 8.72119 1.09756 8.81198 1.16357C8.90277 1.22957 8.97031 1.32264 9.00493 1.42941L10.612 6.37668H15.9371C16.0506 6.37662 16.1611 6.4129 16.2524 6.4802C16.3438 6.54749 16.4112 6.64227 16.4448 6.75066C16.4784 6.85904 16.4764 6.97533 16.4391 7.0825C16.4018 7.18967 16.3312 7.28208 16.2376 7.34621L11.9195 10.3046L13.584 15.2363C13.6109 15.3161 13.6185 15.4012 13.6061 15.4846C13.5937 15.5679 13.5616 15.6471 13.5125 15.7157C13.4634 15.7842 13.3988 15.84 13.3238 15.8786C13.2489 15.9172 13.1659 15.9374 13.0816 15.9375Z"
-              fill="#161616"
-            />
-            <path
-              d="M38.0816 15.9375C37.9698 15.938 37.8607 15.9031 37.7698 15.8379L33.4996 12.7421L29.2293 15.8379C29.1381 15.9041 29.0282 15.9395 28.9155 15.9391C28.8028 15.9387 28.6931 15.9025 28.6024 15.8356C28.5116 15.7688 28.4445 15.6748 28.4107 15.5673C28.3768 15.4598 28.3781 15.3444 28.4142 15.2376L30.0797 10.3046L25.7633 7.34455C25.6698 7.28051 25.5992 7.18824 25.5619 7.08123C25.5245 6.97423 25.5224 6.85809 25.5558 6.74979C25.5892 6.64149 25.6563 6.5467 25.7474 6.47927C25.8385 6.41185 25.9488 6.37532 26.0621 6.37502H31.3872L32.9942 1.42941C33.0288 1.32264 33.0964 1.22957 33.1872 1.16357C33.278 1.09756 33.3873 1.06201 33.4996 1.06201C33.6118 1.06201 33.7212 1.09756 33.812 1.16357C33.9028 1.22957 33.9703 1.32264 34.0049 1.42941L35.612 6.37668H40.9371C41.0506 6.37662 41.1611 6.4129 41.2524 6.4802C41.3438 6.54749 41.4112 6.64227 41.4448 6.75066C41.4784 6.85904 41.4764 6.97533 41.4391 7.0825C41.4018 7.18967 41.3312 7.28208 41.2376 7.34621L36.9195 10.3046L38.584 15.2363C38.6109 15.3161 38.6185 15.4012 38.6061 15.4846C38.5937 15.5679 38.5616 15.6471 38.5125 15.7157C38.4634 15.7842 38.3988 15.84 38.3238 15.8786C38.2489 15.9172 38.1659 15.9374 38.0816 15.9375Z"
-              fill="#161616"
-            />
-            <path
-              d="M63.0816 15.9375C62.9698 15.938 62.8607 15.9031 62.7698 15.8379L58.4996 12.7421L54.2293 15.8379C54.1381 15.9041 54.0282 15.9395 53.9155 15.9391C53.8028 15.9387 53.6931 15.9025 53.6024 15.8356C53.5116 15.7688 53.4445 15.6748 53.4107 15.5673C53.3768 15.4598 53.3781 15.3444 53.4142 15.2376L55.0797 10.3046L50.7633 7.34455C50.6698 7.28051 50.5992 7.18824 50.5619 7.08123C50.5245 6.97423 50.5224 6.85809 50.5558 6.74979C50.5892 6.64149 50.6563 6.5467 50.7474 6.47927C50.8385 6.41185 50.9488 6.37532 51.0621 6.37502H56.3872L57.9942 1.42941C58.0288 1.32264 58.0964 1.22957 58.1872 1.16357C58.278 1.09756 58.3873 1.06201 58.4996 1.06201C58.6118 1.06201 58.7212 1.09756 58.812 1.16357C58.9028 1.22957 58.9703 1.32264 59.0049 1.42941L60.612 6.37668H65.9371C66.0506 6.37662 66.1611 6.4129 66.2524 6.4802C66.3438 6.54749 66.4112 6.64227 66.4448 6.75066C66.4784 6.85904 66.4764 6.97533 66.4391 7.0825C66.4018 7.18967 66.3312 7.28208 66.2376 7.34621L61.9195 10.3046L63.584 15.2363C63.6109 15.3161 63.6185 15.4012 63.6061 15.4846C63.5937 15.5679 63.5616 15.6471 63.5125 15.7157C63.4634 15.7842 63.3988 15.84 63.3238 15.8786C63.2489 15.9172 63.1659 15.9374 63.0816 15.9375Z"
-              fill="#161616"
-            />
-            <path
-              d="M88.0816 15.9375C87.9698 15.938 87.8607 15.9031 87.7698 15.8379L83.4996 12.7421L79.2293 15.8379C79.1381 15.9041 79.0282 15.9395 78.9155 15.9391C78.8028 15.9387 78.6931 15.9025 78.6024 15.8356C78.5116 15.7688 78.4445 15.6748 78.4107 15.5673C78.3768 15.4598 78.3781 15.3444 78.4142 15.2376L80.0797 10.3046L75.7633 7.34455C75.6698 7.28051 75.5992 7.18824 75.5619 7.08123C75.5245 6.97423 75.5224 6.85809 75.5558 6.74979C75.5892 6.64149 75.6563 6.5467 75.7474 6.47927C75.8385 6.41185 75.9488 6.37532 76.0621 6.37502H81.3872L82.9942 1.42941C83.0288 1.32264 83.0964 1.22957 83.1872 1.16357C83.278 1.09756 83.3873 1.06201 83.4996 1.06201C83.6118 1.06201 83.7212 1.09756 83.812 1.16357C83.9028 1.22957 83.9703 1.32264 84.0049 1.42941L85.612 6.37668H90.9371C91.0506 6.37662 91.1611 6.4129 91.2524 6.4802C91.3438 6.54749 91.4112 6.64227 91.4448 6.75066C91.4784 6.85904 91.4764 6.97533 91.4391 7.0825C91.4018 7.18967 91.3312 7.28208 91.2376 7.34621L86.9195 10.3046L88.584 15.2363C88.6109 15.3161 88.6185 15.4012 88.6061 15.4846C88.5937 15.5679 88.5616 15.6471 88.5125 15.7157C88.4634 15.7842 88.3988 15.84 88.3238 15.8786C88.2489 15.9172 88.1659 15.9374 88.0816 15.9375Z"
-              fill="#161616"
-            />
-            <path
-              d="M113.082 15.9375C112.97 15.938 112.861 15.9031 112.77 15.8379L108.5 12.7421L104.229 15.8379C104.138 15.9041 104.028 15.9395 103.915 15.9391C103.803 15.9387 103.693 15.9025 103.602 15.8356C103.512 15.7688 103.444 15.6748 103.411 15.5673C103.377 15.4598 103.378 15.3444 103.414 15.2376L105.08 10.3046L100.763 7.34455C100.67 7.28051 100.599 7.18824 100.562 7.08123C100.525 6.97423 100.522 6.85809 100.556 6.74979C100.589 6.64149 100.656 6.5467 100.747 6.47927C100.838 6.41185 100.949 6.37532 101.062 6.37502H106.387L107.994 1.42941C108.029 1.32264 108.096 1.22957 108.187 1.16357C108.278 1.09756 108.387 1.06201 108.5 1.06201C108.612 1.06201 108.721 1.09756 108.812 1.16357C108.903 1.22957 108.97 1.32264 109.005 1.42941L110.612 6.37668H115.937C116.051 6.37662 116.161 6.4129 116.252 6.4802C116.344 6.54749 116.411 6.64227 116.445 6.75066C116.478 6.85904 116.476 6.97533 116.439 7.0825C116.402 7.18967 116.331 7.28208 116.238 7.34621L111.92 10.3046L113.584 15.2363C113.611 15.3161 113.619 15.4012 113.606 15.4846C113.594 15.5679 113.562 15.6471 113.513 15.7157C113.463 15.7842 113.399 15.84 113.324 15.8786C113.249 15.9172 113.166 15.9374 113.082 15.9375Z"
-              fill="#161616"
-            />
-          </svg>
-        </div>
-        <div className="item_price">
-          <p>
-            <span>$12.00</span>
-            <span>$54.00</span>
-          </p>
-        </div>
-        <div className="item_text">
-          <p>
-            Justo, cum feugiat imperdiet nulla molestie ac vulputate scelerisque
-            amet. Bibendum adipiscing platea blandit sit sed quam semper
-            rhoncus. Diam ultrices maecenas consequat eu tortor orci, cras
-            lectus mauris, cras egestas quam venenatis neque.
-          </p>
-        </div>
-        <div className="line"></div>
-        <div className="item_choice">
-          <div className="color">
-            <h2>Color</h2>
-            <p>
-              <span>Orange</span>
-              <span>Green</span>
-              <span>Blue</span>
-              <span>Black</span>
-            </p>
-          </div>
-          <div className="size">
-            <h2>Size</h2>
-            <p>
-              <span>XL</span>
-              <span>L</span>
-              <span>M</span>
-              <span>S</span>
-            </p>
-          </div>
-        </div>
-        <div className="add_to_cart">
-          <p>X in stock</p>
-          <div className="cart_buttons">
-            <div>
-              <button onClick={decreaseValue}>-</button>
-              <input type="number" value={value} onChange={handleInputChange} />
-              <button onClick={increaseValue}>+</button>
-            </div>
-            <button type="submit">Add to Cart</button>
-            <button>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <path
-                  d="M11.5775 20.1184L11.5791 20.1195C11.7033 20.2042 11.85 20.2497 12.0003 20.25C12.1505 20.2497 12.2972 20.2043 12.4213 20.1197L12.4225 20.1188C16.0514 17.6554 17.592 15.9885 18.4228 14.9762C20.2043 12.8044 21.0233 10.6247 21.0001 8.28761C20.9745 5.76995 18.9567 3.75 16.5432 3.75C14.784 3.75 13.5422 4.73607 12.7813 5.62196L12.7786 5.62507C12.6818 5.73653 12.5622 5.82591 12.4279 5.88716C12.2936 5.94841 12.1477 5.98011 12 5.98011C11.8524 5.98011 11.7065 5.94841 11.5722 5.88716C11.4379 5.82591 11.3182 5.73654 11.2214 5.62507L11.219 5.62224L11.219 5.62224C10.4577 4.7368 9.21592 3.75 7.45691 3.75C5.04339 3.75 3.0256 5.76992 2.99999 8.287L11.5775 20.1184ZM11.5775 20.1184C7.94854 17.6549 6.40797 15.9879 5.57718 14.9757M11.5775 20.1184L5.57718 14.9757M5.57718 14.9757C3.79489 12.8035 2.97674 10.6239 2.99999 8.28714L5.57718 14.9757Z"
-                  stroke="white"
-                  strokeWidth="1.5"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div className="line"></div>
-        <div className="item_backend">
-          <p>
-            <span>SKU: </span>
-            <span>1233</span>
-          </p>
-          <p>
-            <span>Category: </span>
-            <span>Women, Popular, Orange</span>
-          </p>
-          <p>
-            <span>Tags: </span>
-            <span>Classic, Winter, Modern</span>
-          </p>
-        </div>
-      </div>
-      <div id="item_details_container">
-        <ul>
-          <li>
-            <h2>Description</h2>
-          </li>
-          <li>
-            <h2>Additional Info</h2>
-          </li>
-          <li>
-            <h2>Reviews (x)</h2>
-          </li>
-        </ul>
-        <p>
-          Product Description
-          <br />
-          <br />
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.
-          Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.
-          Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec
-          nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit
-          amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices
-          nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate
-          sem tristique cursus.
-        </p>
-        <ul>
-          <li>Donec nec justo eget felis facilisis fermentum.</li>
-          <li>Suspendisse urna viverra non, semper suscipit pede.</li>
-        </ul>
-        <p>
-          <br />
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.
-          Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.
-          Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec
-          nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit
-          amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices
-          nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate
-          sem tristique cursus.
-        </p>
-        <div className="line"></div>
-      </div>
+      <Item />
+      <ItemDetails />
+    </div>
+  );
+}
+
+function ItemDetails() {
+  return (
+    <div id="item_details_container">
+      <ul>
+        <li>
+          <h2>Description</h2>
+        </li>
+        <li>
+          <h2>Additional Info</h2>
+        </li>
+        <li>
+          <h2>Reviews (x)</h2>
+        </li>
+      </ul>
+      <p>
+        Product Description
+        <br />
+        <br />
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.
+        Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.
+        Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec
+        nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit
+        amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices nulla
+        quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem
+        tristique cursus.
+      </p>
+      <ul id="para_list">
+        <li>Donec nec justo eget felis facilisis fermentum.</li>
+        <li>Suspendisse urna viverra non, semper suscipit pede.</li>
+      </ul>
+      <p>
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.
+        Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.
+        Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec
+        nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit
+        amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices nulla
+        quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem
+        tristique cursus.
+      </p>
+      <div className="line"></div>
     </div>
   );
 }

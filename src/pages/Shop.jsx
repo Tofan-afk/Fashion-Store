@@ -6,13 +6,28 @@ import {
   Instagram_Post,
   Present,
   Logo_Buttons,
+  Item,
 } from "./Components";
 
 export default function Shop() {
+  const item_con = document.getElementById("item_con");
+
+  useEffect(() => {
+    // Assuming you have a reference to item_con, otherwise get it using document.getElementById or useRef
+    document.getElementById("item_con").style.display = "none";
+  }, []); // Empty dependency array means this effect will run once when the component mounts
+
+  const [price, setPrice] = useState();
+  const [itemName, setItemName] = useState();
   return (
     <div id="shop">
       <Present title="Shop" src="./shop-background.png" />
-      <Shop_Window />
+      <Item price={price} name={itemName} />
+      <Shop_Window
+        setPrice={setPrice}
+        setItemName={setItemName}
+        item_con={item_con}
+      />
       <Reviews />
       <Recent_Blogs />
       <Logo_Buttons />
@@ -21,28 +36,54 @@ export default function Shop() {
   );
 }
 
-function Shop_Window() {
+function Shop_Window({ setPrice, setItemName }) {
   const shop_img = [
-    { src: "./shop/car.png", alt: "car" },
-    { src: "./shop/distress_beanie.png", alt: "beanin" },
-    { src: "./shop/fancy.png", alt: "fancy" },
-    { src: "./shop/red_dress.png", alt: "r_dress" },
-    { src: "./shop/outside.png", alt: "out" },
-    { src: "./shop/something.png", alt: "smth" },
-    { src: "./shop/greer.png", alt: "green" },
-    { src: "./shop/black_dress.png", alt: "b_dress" },
-    { src: "./shop/couch.png", alt: "couch" },
+    { src: "./shop/car.png", alt: "car", price: "$7.00" },
+    { src: "./shop/distress_beanie.png", alt: "beanin", price: "$10.00" },
+    { src: "./shop/fancy.png", alt: "fancy", price: "$25.00" },
+    { src: "./shop/red_dress.png", alt: "r_dress", price: "$13.00" },
+    { src: "./shop/outside.png", alt: "out", price: "$88.00" },
+    { src: "./shop/something.png", alt: "smth", price: "$14.00" },
+    { src: "./shop/greer.png", alt: "green", price: "$845.00" },
+    { src: "./shop/black_dress.png", alt: "b_dress", price: "$213.00" },
+    { src: "./shop/couch.png", alt: "couch", price: "$23.00" },
   ];
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      // Check if the pressed key is the "Esc" key (key code 27)
+      if (event.keyCode === 27) {
+        document.getElementById("item_con").style.display = "none";
+      }
+    };
+
+    // Attach the event listener when the component mounts
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Detach the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []); // Empty dependency array to ensure the effect runs only once when the component mounts
+
   return (
     <div id="shop_window_container">
       <div id="shop_showcase">
-        {shop_img.map((e) => (
-          <div>
-            <img src={e.src} alt={e.alt} />
-            <h2>{e.alt}</h2>
-            <p>$7.00</p>
-          </div>
-        ))}
+        {shop_img.map((e) => {
+          function setDisplay() {
+            setPrice(e.price);
+            setItemName(e.alt);
+            document.getElementById("item_con").style.display = "flex";
+          }
+
+          return (
+            <div onClick={setDisplay}>
+              <img src={e.src} alt={e.alt} />
+              <h2>{e.alt}</h2>
+              <p>{e.price}</p>
+            </div>
+          );
+        })}
       </div>
       <div id="categories">
         <form>

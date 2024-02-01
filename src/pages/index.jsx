@@ -10,6 +10,9 @@ import Blogs from "./Blogs";
 import Contact from "./Contact";
 import NoPage from "./NoPage";
 import Test from "./test";
+import BlogDetails from "./Blog_Details";
+import Cart from "./Cart";
+import LogIn from "./Login";
 
 export default function App() {
   return (
@@ -24,6 +27,9 @@ export default function App() {
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NoPage />} />
             <Route path="test" element={<Test />} />
+            <Route path="blogdetails" element={<BlogDetails />} />
+            <Route path="login" element={<LogIn />} />
+            <Route path="cart" element={<Cart />} />
           </Route>
         </Routes>
       </BrowserRouter>
