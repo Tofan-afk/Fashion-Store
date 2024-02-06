@@ -376,27 +376,26 @@ export function Item({ price, name }) {
 
   const [value, setValue] = useState(1);
 
-  const handleInputChange = (event) => {
-    let inputValue = parseInt(event.target.value, 10);
-
-    if (!isNaN(inputValue) && inputValue >= 1 && inputValue <= 25) {
-      setValue(inputValue);
-    }
-  };
-
-  const decreaseValue = () => {
-    setValue((prevValue) => Math.max(prevValue - 1, 1));
-  };
-
-  const increaseValue = () => {
-    setValue((prevValue) => Math.min(prevValue + 1, 25));
-  };
-
   const handleClose = () => {
     setDisplay("none");
   };
   return (
-    <div id="item_con">
+    <div
+      id="item_con"
+      style={
+        window.location.pathname.endsWith("/test")
+          ? {
+              position: "static",
+              transform: "translate(0, 0)",
+              width: "100%",
+              padding: 0,
+              height: "auto",
+              overflowY: "hidden",
+              background: "none",
+            }
+          : {}
+      }
+    >
       <div id="image_column">
         {image_column.map((image) => (
           <img key={image} src={image} onClick={() => setImgSelect(image)} />
@@ -405,7 +404,8 @@ export function Item({ price, name }) {
       <img id="active_image" src={ImgSelect} />
       <div id="item_description">
         <div className="item_title_rating">
-          <h2>{name}</h2>
+          <h2>{name || "Default Name"}</h2>
+
           <svg
             width="117"
             height="17"
@@ -473,11 +473,7 @@ export function Item({ price, name }) {
         <div className="add_to_cart">
           <p>X in stock</p>
           <div className="cart_buttons">
-            <div>
-              <button onClick={decreaseValue}>-</button>
-              <input type="number" value={value} onChange={handleInputChange} />
-              <button onClick={increaseValue}>+</button>
-            </div>
+            <QuantityButtons value={value} setValue={setValue} />
             <button type="submit">Add to Cart</button>
             <button>
               <svg
@@ -513,5 +509,166 @@ export function Item({ price, name }) {
         </div>
       </div>
     </div>
+  );
+}
+
+export function QuantityButtons({ value, setValue }) {
+  const handleInputChange = (event) => {
+    let inputValue = parseInt(event.target.value, 10);
+
+    if (!isNaN(inputValue) && inputValue >= 1 && inputValue <= 25) {
+      setValue(inputValue);
+    }
+  };
+
+  const decreaseValue = () => {
+    setValue((prevValue) => Math.max(prevValue - 1, 1));
+  };
+
+  const increaseValue = () => {
+    setValue((prevValue) => Math.min(prevValue + 1, 25));
+  };
+  return (
+    <div className="quant_butt">
+      <button onClick={decreaseValue}>-</button>
+      <input type="number" value={value} onChange={handleInputChange} />
+      <button onClick={increaseValue}>+</button>
+    </div>
+  );
+}
+
+export function Photo_Carousel({ title, description }) {
+  function The_Photo_Carousel() {
+    // Create an array called images with 12 links from Unsplash
+    let images = [
+      "./place.jpg",
+      "./home-background.png",
+      "./bg.jpg",
+      "./author.png",
+      "./place.jpg",
+      "./home-background.png",
+      "./home-background.png",
+      "./place.jpg",
+      "./place.jpg",
+      "./place.jpg",
+      "./place.jpg",
+      "./home-background.png",
+    ];
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const nextSlide = () => {
+      fadeAndChangeContent(() => {
+        setCurrentIndex(
+          (prevIndex) => (prevIndex + gridDivide) % images.length
+        );
+      });
+    };
+
+    const prevSlide = () => {
+      fadeAndChangeContent(() => {
+        setCurrentIndex(
+          (prevIndex) =>
+            (prevIndex - gridDivide + images.length) % images.length
+        );
+      });
+    };
+
+    const fadeAndChangeContent = (callback) => {
+      let elements = document.getElementsByClassName("image_carousel");
+
+      // Convert HTMLCollection to an array
+      let elementsArray = Array.from(elements);
+
+      // Apply fade-out to each element
+      elementsArray.forEach((element) => {
+        element.style.opacity = 0;
+      });
+
+      setTimeout(function () {
+        callback();
+
+        // Fade in each element
+        elementsArray.forEach((element) => {
+          element.style.transition = "opacity 1s";
+          element.style.opacity = 1;
+        });
+      }, 500); // Adjust the timeout as needed (in milliseconds)
+    };
+
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+
+    useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 640);
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }, []);
+
+    const gridDivide = isMobile ? 2 : 4;
+
+    return (
+      <div className="photo-carousel">
+        <button onClick={prevSlide}>
+          <svg
+            width="86"
+            height="86"
+            viewBox="0 0 86 86"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="43" cy="43" r="43" fill="#F7ECEA" />
+            <path
+              d="M54.3667 58.3L39.1001 43L54.3667 27.7L49.6667 23L29.6667 43L49.6667 63L54.3667 58.3Z"
+              fill="#040404"
+            />
+          </svg>
+        </button>
+        <div className="photo-grid">
+          {images
+            .slice(currentIndex, currentIndex + gridDivide)
+            .map((image, index) => (
+              <img
+                className="fade image_carousel"
+                key={index}
+                src={image}
+                alt={`Slide ${currentIndex + index + 1}`}
+              />
+            ))}
+        </div>
+        <button onClick={nextSlide}>
+          <svg
+            width="86"
+            height="86"
+            viewBox="0 0 86 86"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="43" cy="43" r="43" fill="#F1E4E1" />
+            <path
+              d="M31.6333 58.3L46.9 43L31.6333 27.7L36.3333 23L56.3333 43L36.3333 63L31.6333 58.3Z"
+              fill="#040404"
+            />
+          </svg>
+        </button>
+      </div>
+    );
+  }
+  return (
+    <>
+      <div className="wide_container">
+        <span>
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </span>
+        <The_Photo_Carousel />
+        <button className="shop_now">Shop All</button>
+      </div>
+    </>
   );
 }

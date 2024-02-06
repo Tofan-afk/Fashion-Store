@@ -1,0 +1,44 @@
+@import "./defaults/mixins.scss";
+
+#login {
+  display: flex;
+  flex-direction: column;
+  gap: 150px;
+  margin-bottom: 100px;
+}
+
+#login_container {
+  margin: 0 auto;
+  width: 35%;
+  max-width: 1920px;
+  h2 {
+    @include heading_def;
+    margin: 0;
+    text-align: left;
+  }
+  p {
+    @include description_text;
+    margin: 0;
+    text-align: left;
+  }
+  form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    input {
+      @include description_text;
+      width: 100%;
+      text-align: left;
+      font-style: italic;
+      border: none;
+      border-bottom: 1px solid black;
+      padding: 10px 0;
+    }
+    button {
+      margin-top: 30px;
+      width: min-content;
+      @include button_black_text;
+    }
+  }
+}

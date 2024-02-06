@@ -35,6 +35,17 @@
   }
 }
 
+@media screen and (max-width: 640px) {
+  #reviews_container {
+    padding: 0;
+    .review-carousel div {
+      gap: 50px;
+    }
+  }
+}
+
+/* */
+
 #video_container {
   width: 100%;
   height: 782px;
@@ -43,6 +54,14 @@
     height: 100%;
   }
 }
+
+@media screen and (max-width: 640px) {
+  #video_container {
+    height: 315px;
+  }
+}
+
+/* */
 
 #services_container {
   display: flex;
@@ -61,7 +80,7 @@
     li {
       border-bottom: solid 1px #ddd3d1;
       border-top: solid 1px #ddd3d1;
-      width: 380px;
+      width: 23%;
       height: 160px;
       display: flex;
       align-items: center;
@@ -88,38 +107,115 @@
   }
 }
 
-#blog-links {
+@media screen and (max-width: 640px) {
+  #services_container {
+    ul {
+      flex-direction: column;
+      gap: 50px;
+      li {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* */
+
+.photo-carousel {
   display: flex;
-  max-width: 1920px;
-  padding: 0 100px;
   gap: 20px;
-  justify-content: center;
-  margin: 40px 0;
-  div {
-    width: 33%;
-    height: 400px;
+  padding: 50px 100px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1920px;
+  margin: auto;
+  button {
+    @include button;
+    padding: 0 20px;
+  }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
     img {
+      max-width: 100%;
+      height: 420px;
       object-fit: cover;
-      width: 100%;
-      height: 80%;
       transition: scale 0.3s ease-in-out;
       &:hover {
         scale: 1.1;
       }
     }
-    h2 {
-      @include heading_def;
-      color: black;
-      font-size: 1.3rem;
-      letter-spacing: normal;
-      margin: 5px 0;
-    }
-    p {
-      @include description_text;
-      margin: 5px 0;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .photo-carousel {
+    padding: 50px 0;
+    .photo-grid {
+      grid-template-columns: repeat(2, 1fr);
+      img {
+        height: 200px;
+      }
     }
   }
 }
+
+/* */
+
+#bloc_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  #blog-links {
+    display: flex;
+    max-width: 1920px;
+    padding: 0 100px;
+    gap: 20px;
+    justify-content: center;
+    margin: 40px 0;
+    div {
+      width: 33%;
+      height: 400px;
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 80%;
+        transition: scale 0.3s ease-in-out;
+        &:hover {
+          scale: 1.1;
+        }
+      }
+      h2 {
+        @include heading_def;
+        color: black;
+        font-size: 1.3rem;
+        letter-spacing: normal;
+        margin: 5px 0;
+      }
+      p {
+        @include description_text;
+        margin: 5px 0;
+      }
+    }
+  }
+  button {
+    width: max-content;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  #blog-links {
+    padding: 0 20px !important;
+    div {
+      img {
+        height: 200px !important;
+      }
+    }
+  }
+}
+
+/* */
 
 #insta_container {
   max-width: 1920px;
@@ -158,6 +254,20 @@
   }
 }
 
+@media screen and (max-width: 640px) {
+  #insta_container {
+    padding: 0 20px;
+    #insta_flex {
+      flex-wrap: wrap !important;
+      img {
+        width: 40vw;
+      }
+    }
+  }
+}
+
+/* */
+
 #present_about_container {
   position: relative;
   width: 100%;
@@ -195,166 +305,186 @@
   }
 }
 
+@media screen and (max-width: 640px) {
+  #logo_butt_container {
+    flex-wrap: wrap;
+    gap: 50px;
+    img:last-of-type {
+      margin: 0 auto;
+    }
+  }
+}
+
 /* */
 
-#image_column {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 8%;
-  img {
-    cursor: pointer;
-    height: 160px;
+#item_con {
+  #image_column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 8%;
+    img {
+      cursor: pointer;
+      height: 160px;
+      object-fit: cover;
+    }
+  }
+  #active_image {
+    width: 37%;
+    height: 660px;
     object-fit: cover;
   }
-}
-#active_image {
-  width: 37%;
-}
-#item_description {
-  text-align: left;
-
-  width: calc(52% - 40px);
-  padding: 20px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  .item_title_rating {
-    display: inline-block;
+  #item_description {
     text-align: left;
-    h2 {
-      @include heading_def;
-      font-size: 2rem;
-      text-align: left;
-      margin: 0;
-    }
-  }
-  .item_price {
-    p {
-      margin: 0;
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-      align-items: center;
-      span {
-        &:nth-child(1) {
-          color: #ec6c5a;
-          font-family: "DM Sans";
-          font-size: 32px;
-          font-style: normal;
-          font-weight: 700;
-          line-height: normal;
-          letter-spacing: 0.64px;
-        }
-        &:nth-child(2) {
-          color: #bab3b1;
-          font-family: "DM Sans";
-          font-size: 20px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: normal;
-          letter-spacing: 0.4px;
-          text-decoration-line: strikethrough;
-        }
-      }
-    }
-  }
-  .item_text {
-    p {
-      @include description_text;
-      text-align: left;
-    }
-  }
-  .item_choice {
-    user-select: none;
+
+    width: calc(52% - 40px);
+    padding: 20px;
 
     display: flex;
     flex-direction: column;
     gap: 20px;
-    h2 {
-      margin: 0;
-      @include heading_def;
-      text-decoration: underline;
-      letter-spacing: normal;
-      font-size: 1.6rem;
+    .item_title_rating {
+      display: inline-block;
       text-align: left;
-    }
-    p {
-      margin: 0;
-      @include description_text;
-      text-align: left;
-      display: flex;
-      flex-direction: row;
-      gap: 20px;
-      span {
-        cursor: pointer;
-        &:hover {
-          text-decoration: underline;
-          color: #040404;
-        }
+      h2 {
+        @include heading_def;
+        font-size: 2rem;
+        text-align: left;
+        margin: 0;
       }
     }
-  }
-  .add_to_cart {
-    p {
-      @include description_text;
-      color: #000;
-      text-align: left;
-    }
-    .cart_buttons {
-      display: flex;
-      flex-direction: row;
-      gap: 20px;
-
-      div {
-        button,
-        input {
-          margin: 0;
-          padding: 0;
-          border: none;
-          width: 40px;
-          height: 40px;
-          text-align: center;
-        }
-        button {
-          color: #000;
-          background-color: #e5d8d5;
-          &:hover {
-            background: #f6ecea;
+    .item_price {
+      p {
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        span {
+          &:nth-child(1) {
+            color: #ec6c5a;
+            font-family: "DM Sans";
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            letter-spacing: 0.64px;
+          }
+          &:nth-child(2) {
+            color: #bab3b1;
+            font-family: "DM Sans";
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: 0.4px;
+            text-decoration-line: strikethrough;
           }
         }
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-          /* display: none; <- Crashes Chrome on hover */
-          -webkit-appearance: none;
-          margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-        }
       }
-      button {
-        @include button_black_text;
-        &:nth-child(3) {
-          padding: 5px 10px;
-          text-align: center;
-        }
-        &:hover {
+    }
+    .item_text {
+      p {
+        @include description_text;
+        text-align: left;
+      }
+    }
+    .item_choice {
+      user-select: none;
+
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      h2 {
+        margin: 0;
+        @include heading_def;
+        text-decoration: underline;
+        letter-spacing: normal;
+        font-size: 1.6rem;
+        text-align: left;
+      }
+      p {
+        margin: 0;
+        @include description_text;
+        text-align: left;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        span {
           cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+            color: #040404;
+          }
         }
       }
     }
-  }
-  .item_backend {
-    p {
-      text-align: left !important;
-      @include description_text;
-      span {
-        &:nth-child(1) {
-          font-weight: 700;
-          color: #000;
+    .add_to_cart {
+      p {
+        @include description_text;
+        color: #000;
+        text-align: left;
+      }
+      .cart_buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+
+        button {
+          @include button_black_text;
+          padding: 0;
+          &:nth-of-type(2) {
+            padding: 5px 10px;
+            text-align: center;
+          }
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        button[type="submit"] {
+          padding: 5px 40px;
+          text-align: center;
+        }
+      }
+    }
+    .item_backend {
+      p {
+        text-align: left !important;
+        @include description_text;
+        span {
+          &:nth-child(1) {
+            font-weight: 700;
+            color: #000;
+          }
         }
       }
     }
   }
 }
 
-/* */
+.quant_butt {
+  button,
+  input {
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+  }
+  button {
+    color: #000;
+    background-color: #e5d8d5;
+    &:hover {
+      background: #f6ecea;
+    }
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  }
+}
