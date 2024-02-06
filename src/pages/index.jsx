@@ -19,7 +19,7 @@ export default function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/Swanky-Fashion-Store/" element={<Header />}>
+          <Route path="/Fashion-Store/" element={<Header />}>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="shop" element={<Shop />} />

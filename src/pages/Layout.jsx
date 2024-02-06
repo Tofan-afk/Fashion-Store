@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../SASS/layout.scss";
 import { Outlet, Link, useLocation } from "react-router-dom";
-import Hamburger from "hamburger-react";
 
 export function Header() {
   const location = useLocation();
@@ -232,7 +231,7 @@ export function Header() {
             </ul>
           </div>
           <div id="slide_button">
-            <Hamburger size={20} />
+            <button>hah</button>
           </div>
         </div>
         <div id="slide_menu">
